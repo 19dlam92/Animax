@@ -1,8 +1,8 @@
 package com.lam.anime.repositories;
 import java.util.List;
-import com.lam.anime.models.AnimeModel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import com.lam.anime.models.AnimeModel;
 
 // ====================================================
 // TALKS TO THE DATABASE
