@@ -2,9 +2,12 @@ package com.lam.anime.models;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -33,7 +36,15 @@ public class AnimeModel {
 
     @NotNull
     @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
+    private String title;
+
+    @NotNull
+    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
     private String genre;
+
+    @NotNull
+    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
+    private String description;
 
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -41,6 +52,9 @@ public class AnimeModel {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private UserModel user;
 
     // ====================================
 	// EMPTY CONSTRUCTOR
@@ -53,10 +67,12 @@ public class AnimeModel {
     // ====================================
 	// LOADED CONSTRUCTOR
 	// ====================================
-    public AnimeModel(String shows, String manga, String genre) {
+    public AnimeModel(String shows, String manga, String title, String genre, String description) {
         this.shows = shows;
         this.manga = manga;
+        this.title = title;
         this.genre = genre;
+        this.description = description;
     }
 
 
@@ -69,11 +85,17 @@ public class AnimeModel {
     public String getManga() {
         return manga;
     }
+    public String getTitle() {
+        return title;
+    }
     public String getGenre() {
         return genre;
     }
-
-
+    public String getDescription() {
+        return description;
+    }
+    
+    
     // ====================================
 	// SETTERS
 	// ====================================
@@ -83,9 +105,16 @@ public class AnimeModel {
     public void setManga(String manga) {
         this.manga = manga;
     }
+    public void setTitle(String title) {
+        this.title = title;
+    }
     public void setGenre(String genre) {
         this.genre = genre;
     }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     // ====================================
 	// CREATED AT & UPDATED AT

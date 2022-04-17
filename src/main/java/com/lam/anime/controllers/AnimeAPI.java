@@ -38,14 +38,16 @@ public class AnimeAPI {
     public AnimeModel create(
         @RequestParam(value = "shows") String shows,
         @RequestParam(value = "manga") String manga,
-        @RequestParam(value = "genre") String genre
+        @RequestParam(value = "title") String title,
+        @RequestParam(value = "genre") String genre,
+        @RequestParam(value = "description") String description
         // Refer back to loaded constructor in the MODEL for required fields
     ) {
 
         // ====================================================
         // CREATE INSTANCE OF A CLASS
         // ====================================================
-        AnimeModel newAnime = new AnimeModel(shows, manga, genre);
+        AnimeModel newAnime = new AnimeModel(shows, manga, title, genre, description);
         return this.animeService.createAnime(newAnime);
     
     }
