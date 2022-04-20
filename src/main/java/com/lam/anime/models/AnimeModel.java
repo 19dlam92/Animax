@@ -32,10 +32,6 @@ public class AnimeModel {
 
     @NotNull
     @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
-    private String manga;
-
-    @NotNull
-    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
     private String title;
 
     @NotNull
@@ -67,9 +63,8 @@ public class AnimeModel {
     // ====================================
 	// LOADED CONSTRUCTOR
 	// ====================================
-    public AnimeModel(String shows, String manga, String title, String genre, String description) {
+    public AnimeModel(String shows, String title, String genre, String description) {
         this.shows = shows;
-        this.manga = manga;
         this.title = title;
         this.genre = genre;
         this.description = description;
@@ -81,9 +76,6 @@ public class AnimeModel {
 	// ====================================
     public String getShows() {
         return shows;
-    }
-    public String getManga() {
-        return manga;
     }
     public String getTitle() {
         return title;
@@ -101,9 +93,6 @@ public class AnimeModel {
 	// ====================================
     public void setShows(String shows) {
         this.shows = shows;
-    }
-    public void setManga(String manga) {
-        this.manga = manga;
     }
     public void setTitle(String title) {
         this.title = title;

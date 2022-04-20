@@ -7,33 +7,31 @@ const AllAnime = () => {
 
     const [animeList, setAnimeList] = useState([]);
     const axios = require("axios");
-
     const encodedParams = new URLSearchParams();
-    encodedParams.append("body", "<REQUIRED>");
     encodedParams.append("accessToken", "<REQUIRED>");
-    encodedParams.append("title", "<REQUIRED>");
+    encodedParams.append("userId", "<REQUIRED>");
 
     const options = {
-        method: 'GET',
-        url: 'https://anilistmikilior1v1.p.rapidapi.com/createThread',
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Host': 'Anilistmikilior1V1.p.rapidapi.com',
-            // from Anilist
-            'X-RapidAPI-Key': 'a5c37c9aaamshf9e2def26afa747p166740jsn71cf6fdad8e0'
-            // my key
+        method: "POST",
+        url: "https://anilistmikilior1v1.p.rapidapi.com/getAnimeList",
+        header: {
+            "content-type": "application/x-www-form-urlencoded",
+            "X-RapidAPI-Host": "Anilistmikilior1V1.p.rapidapi.com",
+            "X-RapidAPI-Key": "8e00e00e31msh0378357908dc340p11db1ejsnda17ed8e232a"
         },
         data: encodedParams
-    };
+    }
+
 
     useEffect(() => {
-        axios.request(options).then(function(response) {
-            console.log(response.data);
-        }).catch(function(err) {
-            console.error(err);
-        });
+        axios.request(options).then((response) => {
+                setAnimeList(response.data.results)
+            })
+            .catch((err) => {
+                console.error(err)
+            })
     }, [])
-    
+
 
     return (
         <>

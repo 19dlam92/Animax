@@ -1,12 +1,14 @@
 package com.lam.anime.controllers;
 import java.util.List;
+
+import com.lam.anime.models.AnimeModel;
+import com.lam.anime.services.AnimeService;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.lam.anime.models.AnimeModel;
-import com.lam.anime.services.AnimeService;
 
 // ====================================================
 // TALKS TO THE SERVICE
@@ -26,31 +28,34 @@ public class AnimeAPI {
         this.animeService = animeService;
     }
 
+
     // ====================================================
-    // GET/DISPLAY ALL . . . . 
+    // GET ALL . . . . 
     // ====================================================
     @RequestMapping("/api/animes")
     public List<AnimeModel> index() {
         return this.animeService.allAnimes();
     }
 
+
+    // ====================================================
+    // CREATE . . . . 
+    // ====================================================
     @RequestMapping(value = "/api/animes", method = RequestMethod.POST)
     public AnimeModel create(
         @RequestParam(value = "shows") String shows,
-        @RequestParam(value = "manga") String manga,
         @RequestParam(value = "title") String title,
         @RequestParam(value = "genre") String genre,
         @RequestParam(value = "description") String description
-        // Refer back to loaded constructor in the MODEL for required fields
+        // Refer back to loaded constructor in the MODEL
+        // for required fields or modification
+        // don't forget to adjust table data and getters & setters
     ) {
-
-        // ====================================================
-        // CREATE INSTANCE OF A CLASS
-        // ====================================================
-        AnimeModel newAnime = new AnimeModel(shows, manga, title, genre, description);
+        AnimeModel newAnime = new AnimeModel(shows, title, genre, description);
         return this.animeService.createAnime(newAnime);
-    
+        // CREATE INSTANCE OF A CLASS
     }
+
 
     // ====================================================
     // GET ON BY ID . . . . 
@@ -64,6 +69,3 @@ public class AnimeAPI {
     }
 
 }
-
-// We're only collecting data from the API
-// So we only need GET METHODS
