@@ -7,20 +7,15 @@ const AllAnime = () => {
 
     const [animeList, setAnimeList] = useState([]);
     const axios = require("axios");
-    const encodedParams = new URLSearchParams();
-    encodedParams.append("accessToken", "<REQUIRED>");
-    encodedParams.append("userId", "<REQUIRED>");
 
     const options = {
-        method: "POST",
-        url: "https://anilistmikilior1v1.p.rapidapi.com/getAnimeList",
-        header: {
-            "content-type": "application/x-www-form-urlencoded",
-            "X-RapidAPI-Host": "Anilistmikilior1V1.p.rapidapi.com",
-            "X-RapidAPI-Key": "8e00e00e31msh0378357908dc340p11db1ejsnda17ed8e232a"
-        },
-        data: encodedParams
-    }
+        method: "GET",
+        url: "https://animenewsnetwork.p.rapidapi.com/api.xml",
+        headers: {
+        "X-RapidAPI-Host": "animenewsnetwork.p.rapidapi.com",
+        "X-RapidAPI-Key": "8e00e00e31msh0378357908dc340p11db1ejsnda17ed8e232a"
+        }
+    };
 
 
     useEffect(() => {
