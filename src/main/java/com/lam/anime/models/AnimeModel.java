@@ -23,33 +23,33 @@ public class AnimeModel {
 	// DOMAIN MODEL - 
 	// ====================================
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
     @NotNull
-    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
+    @Size( min = 2, max = 200, message = "MUST be at least 2 characters!" )
     private String shows;
 
     @NotNull
-    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
+    @Size( min = 2, max = 200, message = "MUST be at least 2 characters!" )
     private String title;
 
     @NotNull
-    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
+    @Size( min = 2, max = 200, message = "MUST be at least 2 characters!" )
     private String genre;
 
     @NotNull
-    @Size(min = 2, max = 200, message = "MUST be at least 2 characters!")
+    @Size( min = 2, max = 200, message = "MUST be at least 2 characters!" )
     private String description;
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column( updatable = false )
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "user_id" )
     private UserModel user;
 
     // ====================================
@@ -91,16 +91,16 @@ public class AnimeModel {
     // ====================================
 	// SETTERS
 	// ====================================
-    public void setShows(String shows) {
+    public void setShows( String shows ) {
         this.shows = shows;
     }
-    public void setTitle(String title) {
+    public void setTitle( String title ) {
         this.title = title;
     }
-    public void setGenre(String genre) {
+    public void setGenre( String genre ) {
         this.genre = genre;
     }
-    public void setDescription(String description) {
+    public void setDescription( String description ) {
         this.description = description;
     }
 

@@ -21,30 +21,30 @@ public class UserModel {
 	// @Transient = for PASSWORD CONFIRMATION
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
     
-    @NotEmpty(message="is required!")
-    @Size(min=3, max=30, message="MUST be between 3 and 30 characters")
+    @NotEmpty( message = "is required!" )
+    @Size( min = 3, max = 30, message = "MUST be between 3 and 30 characters" )
     private String userName;
     
-    @NotEmpty(message="is required!")
-    @Email(message="Invalid email!")
+    @NotEmpty( message = "is required!" )
+    @Email( message = "Invalid email!" )
     private String email;
     
-    @NotEmpty(message="is required!")
-    @Size(min=8, max=128, message="MUST be between 8 and 128 characters")
+    @NotEmpty( message = "is required!" )
+    @Size( min = 8, max = 128, message = "MUST be between 8 and 128 characters" )
     private String password;
     
     @Transient
-    @NotEmpty(message="MUST match Password!")
-    @Size(min=8, max=128, message="MUST be between 8 and 128 characters")
+    @NotEmpty( message = "MUST match Password!" )
+    @Size( min = 8, max = 128, message = "MUST be between 8 and 128 characters" )
     private String confirm;
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column( updatable = false )
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date updatedAt;
     
     // ====================================================
@@ -86,19 +86,19 @@ public class UserModel {
     // ====================================================
 	// SETTERS
     // ====================================================
-	public void setId(Long id) {
+	public void setId( Long id ) {
 		this.id = id;
 	}
-	public void setUserName(String userName) {
+	public void setUserName( String userName ) {
 		this.userName = userName;
 	}
-	public void setEmail(String email) {
+	public void setEmail( String email ) {
 		this.email = email;
 	}
-	public void setPassword(String password) {
+	public void setPassword( String password ) {
 		this.password = password;
 	}
-	public void setConfirm(String confirm) {
+	public void setConfirm( String confirm ) {
 		this.confirm = confirm;
 	}
     
@@ -106,11 +106,11 @@ public class UserModel {
 	// CREATED_AT AND UPDATED_AT
     // ====================================================
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.createdAt = new Date();
     }
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.updatedAt = new Date();
     }
 	

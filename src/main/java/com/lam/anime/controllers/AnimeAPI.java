@@ -24,7 +24,7 @@ public class AnimeAPI {
     // ====================================================
     // CONSTRUCTOR
     // ====================================================
-    public AnimeAPI(AnimeService animeService) {
+    public AnimeAPI( AnimeService animeService ) {
         this.animeService = animeService;
     }
 
@@ -32,7 +32,7 @@ public class AnimeAPI {
     // ====================================================
     // GET ALL . . . . 
     // ====================================================
-    @RequestMapping("/api/animes")
+    @RequestMapping( "/api/animes" )
     public List<AnimeModel> index() {
         return this.animeService.allAnimes();
     }
@@ -41,12 +41,12 @@ public class AnimeAPI {
     // ====================================================
     // CREATE . . . . 
     // ====================================================
-    @RequestMapping(value = "/api/animes", method = RequestMethod.POST)
+    @RequestMapping( value = "/api/animes", method = RequestMethod.POST )
     public AnimeModel create(
-        @RequestParam(value = "shows") String shows,
-        @RequestParam(value = "title") String title,
-        @RequestParam(value = "genre") String genre,
-        @RequestParam(value = "description") String description
+        @RequestParam( value = "shows" ) String shows,
+        @RequestParam( value = "title" ) String title,
+        @RequestParam( value = "genre" ) String genre,
+        @RequestParam( value = "description" ) String description
         // Refer back to loaded constructor in the MODEL
         // for required fields or modification
         // don't forget to adjust table data and getters & setters
@@ -60,11 +60,11 @@ public class AnimeAPI {
     // ====================================================
     // GET ON BY ID . . . . 
     // ====================================================
-    @RequestMapping("/api/anime/{id}")
-    public AnimeModel display(@PathVariable("id")Long id) {
+    @RequestMapping( "/api/anime/{id}" )
+    public AnimeModel display( @PathVariable( "id" )Long id ) {
         // @PathVarible is used here because
         // we have an "id" used in the url
-        AnimeModel animeDisplay = this.animeService.findAnime(id);
+        AnimeModel animeDisplay = this.animeService.findAnime( id );
         return animeDisplay;
     }
 

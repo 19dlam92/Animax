@@ -6,20 +6,10 @@ import { Link } from 'react-router-dom'
 const AllAnime = () => {
 
     const [animeList, setAnimeList] = useState([]);
-    const axios = require("axios");
-
-    const options = {
-        method: "GET",
-        url: "https://animenewsnetwork.p.rapidapi.com/api.xml",
-        headers: {
-        "X-RapidAPI-Host": "animenewsnetwork.p.rapidapi.com",
-        "X-RapidAPI-Key": "8e00e00e31msh0378357908dc340p11db1ejsnda17ed8e232a"
-        }
-    };
-
 
     useEffect(() => {
-        axios.request(options).then((response) => {
+        axios.get("http://localhost:8000/api/animes")
+            .then((response) => {
                 setAnimeList(response.data.results)
             })
             .catch((err) => {

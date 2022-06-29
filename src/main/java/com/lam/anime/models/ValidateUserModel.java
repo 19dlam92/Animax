@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class ValidateUserModel {
 
-	@NotEmpty(message="is required!")
+	  @NotEmpty(message="is required!")
     @Email(message="Invalid email!")
     private String email;
     
